@@ -8,10 +8,7 @@
     <style>
       /* Define o estilo das divs criadas */
       div {
-        width: 50px;
-        height: 50px;
         display: inline-block;
-        margin: 0;
         flex: 1 0 12.5%;
         flex-basis: 12.5%;
         box-sizing: border-box;
@@ -60,12 +57,14 @@
     const div = document.createElement("div");
     const text = document.createTextNode(matrix[q][w]);
     div.appendChild(text);
-    div.style.width = "50px";
-    div.style.height = "50px";
-    div.style.display = "inline-block";
+    div.style.width = "12.5vw";
+    div.style.height = "12.5vh";
+    div.style.display = "flex";
+    div.style.justifyContent = "center";
+    div.style.alignItems = "center";
     div.style.backgroundColor = par ? (parnum ? "black" : "white") : (parnum ? "white" : "black");
     div.style.color = par ? (parnum ? "white" : "black") : (parnum ? "black" : "white");
-    div.style.textAlign = "center";
+    div.style.fontSize = "calc(1vw + 1vh)";
     document.body.appendChild(div);
   }
 }
