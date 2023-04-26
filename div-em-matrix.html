@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>apenas existo</title>
+    <style>
+      /* Define o estilo das divs criadas */
+      div {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        margin: 0;
+        flex: 1 0 12.5%;
+        flex-basis: 12.5%;
+        box-sizing: border-box;
+      }
+
+      /* Define o estilo do corpo do documento */
+      body {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      var lista = [];
+      while (lista.length < 64) {
+        var numero = Math.floor(Math.random() * 64);
+        var pode = true;
+        for (var x = 0; x < lista.length; x++) {
+          if (numero == lista[x]) {
+            pode = false;
+          }
+        }
+        if (pode == true) {
+          lista.push(numero);
+        }
+      }
+      lista.sort(function (a, b) {
+        return a - b;
+      });
+      console.log(lista);
+      var matrix = [];
+      for (var y = 0; y < 8; y++) {
+        var linha = [];
+        for (var x = 0 + y * 8; x < 8 + y * 8; x++) {
+          linha.push(lista[x]);
+        }
+        matrix.push(linha);
+      }
+      for (let q = 0; q < matrix.length; q++){
+  for (let w = 0; w < matrix[q].length; w++){
+    const par = q % 2 === 0;
+    const parnum = matrix[q][w] % 2 === 0;
+    const div = document.createElement("div");
+    const text = document.createTextNode(matrix[q][w]);
+    div.appendChild(text);
+    div.style.width = "50px";
+    div.style.height = "50px";
+    div.style.display = "inline-block";
+    div.style.backgroundColor = par ? (parnum ? "black" : "white") : (parnum ? "white" : "black");
+    div.style.color = par ? (parnum ? "white" : "black") : (parnum ? "black" : "white");
+    div.style.textAlign = "center";
+    document.body.appendChild(div);
+  }
+}
+
+      console.log(matrix);
+    </script>
+  </body>
+</html>
